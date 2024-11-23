@@ -1,0 +1,15 @@
+# Ren'Py directories and files
+build/
+saves/
+persistent/
+cache/
+*.rpyc
+*.rpa
+*.rpyb
+*.rpymc
+*.bak
+*.tmp
+*.pyc
+*.pyo
+log.txt
+errors.txt
