@@ -1,33 +1,13 @@
-﻿# The script of the game goes in this file.
+﻿label start:
 
-# Declare characters used by this game. The color argument colorizes the
-# name of the character.
-
-define e = Character("Eileen")
-
-
-# The game starts here.
-
-label start:
-
-    # Show a background. This uses a placeholder by default, but you can
-    # add a file (named either "bg room.png" or "bg room.jpg") to the
-    # images directory to show it.
-
+    # TODO Add background image for North Pole workshop
     scene bg room
 
-    # This shows a character sprite. A placeholder is used, but you can
-    # replace it by adding a file named "eileen happy.png" to the images
-    # directory.
+    "Welcome to the Santa's Lab!"
 
-    show eileen happy
+    "The air is filled with the smell of gingerbread, and the sound of elves crafting toys and typing away at 
+    their keyboards. This is the heart of Santa's operations..."
 
-    # These display lines of dialogue.
+    "But today, something isn't right..."
 
-    e "You've created a new Ren'Py game."
-
-    e "Once you add a story, pictures, and music, you can release it to the world!"
-
-    # This ends the game.
-
-    return
+    jump introduction
