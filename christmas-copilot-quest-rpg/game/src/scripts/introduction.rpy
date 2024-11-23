@@ -27,5 +27,3 @@ label introduction:
 
         "I guess I have no choice... Let's do this!":
             jump set_up_project
-
-    return
