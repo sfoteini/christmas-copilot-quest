@@ -69,17 +69,16 @@ label get_started_with_github_copilot:
         gingerbot "Do you have a GitHub Copilot account?"
 
         "Yes, I have a GitHub Copilot account.":
-            jump user_has_github_copilot_account
+            gingerbot "Perfect! You can use your GitHub Copilot account to complete the tasks in this game."
+            jump install_github_copilot_in_ide
 
         "No, I don't have a GitHub Copilot account. How do I get one?":
             jump create_github_copilot_account
 
         "No, I don't have a GitHub Copilot account. But I will create one later.":
-            jump user_will_create_github_copilot_account_later
-
-label user_has_github_copilot_account:
-    gingerbot "Perfect! You can use your GitHub Copilot account to complete the tasks in this game."
-    jump install_github_copilot_in_ide
+            gingerbot "No problem! You can create a GitHub Copilot account once you've completed this 
+                learning journey."
+            jump explore_github_copilot_features
 
 label create_github_copilot_account:
     gingerbot "GitHub Copilot offers plans for individual developers, organizations, and academic use."
@@ -112,10 +111,6 @@ label get_github_copilot_business_account:
 
     jump install_github_copilot_in_ide
 
-label user_will_create_github_copilot_account_later:
-    gingerbot "No problem! You can create a GitHub Copilot account once you've completed this learning journey."
-    jump explore_github_copilot_features
-
 label install_github_copilot_in_ide:
     player "What's next?"
 
@@ -143,7 +138,7 @@ label install_github_copilot_in_vscode:
     gingerbot "Open Visual Studio Code and go to the {b}Extensions{/b} view."
 
     gingerbot "Search for GitHub Copilot and select the 
-        {a=https://marketplace.visualstudio.com/items?itemName=GitHub.copilot}GitHub Copilot extension{/a} authored  
+        {a=https://marketplace.visualstudio.com/items?itemName=GitHub.copilot}GitHub Copilot extension{/a} authored 
         by GitHub. Click {b}Install{/b}. The GitHub Copilot Chat extension will also be installed automatically."
 
     gingerbot "After installation, you'll see a notification prompting you to sign in with your GitHub account. 
@@ -157,3 +152,139 @@ label explore_github_copilot_features:
     menu:
         "Let's start coding with GitHub Copilot!":
             pass
+
+    gingerbot "Now that you're all set up, let's explore some of the features of GitHub Copilot. Let me show you one 
+        of my coolest features: autocompletions."
+
+    player "Autocompletions? Like suggesting code as I type?"
+
+    gingerbot "Exactly! As you type a line of code, a comment, or even add a blank line, I can predict what you 
+        need and offer suggestions."
+
+    player "That sounds really helpful! How do I use it?"
+
+    gingerbot "It's simple. Just start typing, and when you see a suggestion you like, press the {b}Tab{/b} key to 
+        accept it. If you're not sure about a suggestion, you can even browse alternatives."
+
+    player "That's pretty neat! Can you show me an example?"
+
+    gingerbot "Of course! First, create a new Python file. We are going to use Python for this example, however 
+        other languages will work similarly."
+
+    gingerbot "I provide suggestions for numerous languages and frameworks, but I work especially well with Python, 
+        JavaScript, TypeScript, Ruby, Go, C#, and C++."
+
+    menu:
+        "I've created a new Python file. What's next?":
+            pass
+
+    # TODO Add a different font for code snippets
+
+    gingerbot "Start typing the following function definition:
+        \ndef calculate_days_between_dates(start_date, end_date):"
+
+    gingerbot "As you type, I'll suggest the rest of the function in dimmed gray text. You can accept the 
+        suggested code by pressing the {b}Tab{/b} key."
+
+    menu:
+        "I typed the function definition and saw a suggestion. What should I do next?":
+            pass
+
+        "I typed the function definition, but I didn't see a suggestion. What can I do?":
+            gingerbot "No worries! If there's no suggestion, check the status of the Copilot extension in the 
+                bottom-right corner of Visual Studio Code. Ensure it's active and connected to your account."
+
+            gingerbot "If there's still no suggestion, try restarting or updating Visual Studio Code and the Copilot 
+                extension. You can also check the GitHub Copilot documentation for help."
+
+            gingerbot "Once you're ready, start typing the function definition again."
+
+            menu:
+                "I am ready to continue. What next?":
+                    pass
+
+    gingerbot "Great job! You've seen how autocompletions work. Now, let's take it further. I can suggest multiple 
+        implementations for the same function."
+
+    player "Wow, that sounds powerful! I'm ready to try it out."
+
+    gingerbot "Delete the function body and press {b}Enter{/b} to add a new line after the function definition. 
+        You should see a suggestion for the function body appear."
+
+    gingerbot "If nothing shows up, don't worry! Just retype the function definition as you did before."
+
+    gingerbot "Sometimes, I can suggest multiple ways to implement the same function. You can hover over a suggestion 
+        to preview alternatives and pick the one that works best for you."
+
+    gingerbot "To browse through the options, use the left and right arrows, or open the {b}Completions Panel{/b} 
+        from the ellipsis (...) menu."
+
+    player "That's really helpful! This could save me so much time."
+
+    gingerbot "That's the idea! My goal is to speed things up for you."
+
+    gingerbot "Just remember to review my suggestions before accepting them as they may not always be correct 
+        or fit what you're trying to do."
+
+    player "I see! Actually, I had a slightly different idea for how to implement the function. Can you still 
+        help me with that?"
+
+    gingerbot "Of course! Just give me some hints like type annotations, docstrings, or even a quick comment, and 
+        I'll adjust my suggestions to match your needs."
+
+    gingerbot "Why don't you give it a try now? Add one of these hints and see how I adjust my suggestions based 
+        on your input."
+
+    menu:
+        "I added a hint and tried it out!":
+            gingerbot "Awesome! You're getting the hang of this. Keep experimenting with different types of hints to 
+                see how I adjust my suggestions."
+
+        "I understand how it works, but I'll try it later.":
+            gingerbot "You're doing great so far! Feel free to explore more features whenever you're ready."
+
+        "I'm not sure how to add a hint.":
+            gingerbot "No problem! Let's try it together. Suppose you want to specify that the start and end dates 
+                are of type datetime."
+
+            gingerbot "Here's an example with type annotations:
+                \ndef calculate_days_between_dates(start_date: datetime, end_date: datetime) -> int:"
+
+            menu:
+                "Got it! I'll give it a try now.":
+                    pass
+
+            menu:
+                gingerbot "Would you like to see another example of adding a hint?"
+
+                "Yes, show me another example.":
+                    gingerbot "Sure! Let's try adding the following comment in a new line:
+                        \n# Function to calculate the days between two dates provided as strings in a specific format"
+
+                    gingerbot "You will see how I adjust my suggestions based on the context you provide."
+
+                "No, I'm good for now.":
+                    gingerbot "Awesome! You're getting the hang of this. Keep experimenting with different types of 
+                        hints to see how I adjust my suggestions."
+
+    # TODO Add an achievement for learning about autocompletions
+
+    # TODO In the middle of the conversation, add a tip about having open files for better suggestions
+    # To give you relevant inline suggestions, Copilot looks at the current and open files in your editor to analyze
+    # the context and create appropriate suggestions. Having related files open in VS Code while using Copilot helps
+    # set this context and lets the Copilot see a bigger picture of your project.
+
+label explore_github_copilot_chat:
+    player "Yeah, it's impressive how flexible the suggestions can be!"
+
+    player "But honestly, manually adding docstrings or temporary comments feels a bit tedious. Is there a better way 
+        to guide the code suggestions?"
+
+    gingerbot "I can understand your frustration. That's where GitHub Copilot Chat comes in."
+
+    player "GitHub Copilot Chat? What's that?"
+
+    gingerbot "It's like having a coding assistant right in your editor ready to answer your questions, explain code, 
+        suggest fixes, and write documentation for you."
+
+    player "That sounds amazing! How is it different from regular autocompletions?"
