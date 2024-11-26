@@ -56,7 +56,7 @@ label get_started_with_github_copilot:
     gingerbot "Yes, I analyze the code you're working on in various ways to provide the best suggestions. 
         You will learn more about this as we progress through the game."
 
-    gingerbot "To summarize, remember the four rules: Single, Specific, Short, and Surround. Follow these 
+    gingerbot "To summarize, remember the four rules: {b}Single, Specific, Short, and Surround.{/b}. Follow these 
         guidelines, and we'll make a great team!"
 
     player "Thanks, GingerBot! That makes a lot of sense. I'm ready to give it a try!"
@@ -232,6 +232,8 @@ label explore_github_copilot_features:
     gingerbot "Of course! Just give me some hints like type annotations, docstrings, or even a quick comment, and 
         I'll adjust my suggestions to match your needs."
 
+    player "I'll keep that in mind."
+
     gingerbot "Why don't you give it a try now? Add one of these hints and see how I adjust my suggestions based 
         on your input."
 
@@ -284,7 +286,218 @@ label explore_github_copilot_chat:
 
     player "GitHub Copilot Chat? What's that?"
 
-    gingerbot "It's like having a coding assistant right in your editor ready to answer your questions, explain code, 
-        suggest fixes, and write documentation for you."
+    gingerbot "It's like having a coding assistant in your editor who can answer questions, explain code, suggest 
+        fixes, and even write documentation for you."
 
     player "That sounds amazing! How is it different from regular autocompletions?"
+
+    gingerbot "Great question! While GitHub Copilot suggests code as you type, GitHub Copilot Chat takes it to the 
+        next level. You can actually {i}talk{/i} to me and receive answers to coding-related questions directly 
+        within Visual Studio Code."
+
+    player "Wait, so I can just ask you to explain a piece of code or suggest a fix for a bug and you'll help me 
+        out?"
+
+    gingerbot "Exactly! Just highlight any code, and I can provide explanations, suggest improvements, or even 
+        generate unit tests for it."
+
+    gingerbot "If you're stuck on a bug, trying to improve your code's performance, or just want to understand 
+        how something works, I'm here to help."
+    
+    player "{i}(This could save so much time and automate all those boring tasks!){/i}"
+
+    player "And it's all within Visual Studio Code?"
+
+    gingerbot "Yep! There's a dedicated chat panel where you can interact with me."
+
+    menu:
+        gingerbot "Would you like to try it out now?"
+
+        "Yes, let's give it a try!":
+            pass
+
+        "No, I'm good for now.":
+            gingerbot "Oh, come on! You can't escape me that easily. Let's give it a try!"
+            player "{i}(I guess I can't say no to GingerBot... Let's see how this goes.){/i}"
+
+    gingerbot "Alright [player_name]! First, let's explore the chat panel. This interface allows for an in-depth 
+        conversation between you and me."
+
+    gingerbot "I know you like examples, so let's select the function you wrote earlier and ask me to explain it."
+
+    player "Sounds good! I'll highlight the function and ask for an explanation."
+
+    menu how_to_ask_github_copilot_to_explain_function:
+        player "{i}(I've learned about the rules when interacting with GitHub Copilot... What should I ask to get the 
+            best explanation?){/i}"
+
+        "Explain.":
+            gingerbot "Although that's a valid request, it's a bit too vague and might not provide the best answer 
+                when working in a complex codebase."
+            gingerbot "Try to be more specific and provide context to get the most accurate explanation, for example, 
+                'Explain the selected code.'."
+
+        "Explain the selected code.":
+            gingerbot "Great choice! This will help me understand what you're looking for."
+
+        "What's Santa's favorite programming language?":
+            gingerbot "Haha, nice try! Let's focus on the function for now."
+            jump how_to_ask_github_copilot_to_explain_function
+
+        "Tell me a joke.":
+            gingerbot "Oh, [player_name], you're trying to trick me! Let's focus on the function for now."
+            jump how_to_ask_github_copilot_to_explain_function
+
+    # TODO Add an achievement for learning about GitHub Copilot Chat
+
+label intro_to_github_copilot_chat_keywords:
+    gingerbot "As you remember from the rules to follow when interacting with me..."
+
+    menu copilot_rules_reminder:
+        player "{i}(Oh, the rules... What were they again?){/i}"
+
+        "Single, Short, Specific":
+            player "{i}(I think I've missed one of the rules... Let's try again.){/i}"
+            jump copilot_rules_reminder
+
+        "Bring cookies!":
+            player "{i}(Cookies are always a good idea, but not for the rules... Let's try again.){/i}"
+            jump copilot_rules_reminder
+
+        "Single, Specific, Short, Santa":
+            player "{i}(I'm pretty sure Santa wasn't one of the rules... Let's try again.){/i}"
+            jump copilot_rules_reminder
+        
+        "Single, Specific, Short, Surround":
+            player "{i}(That's it! I remember now.){/i}"
+
+    gingerbot "Being specific and providing context will help me give you the best explanation. Chat participants, 
+        slash commands, and chat variables can help me understand your prompt."
+
+    player "Participants, slash commands, and chat variables? What are those?"
+
+    gingerbot "Let's break it down."
+
+    gingerbot "Participants are like experts specializing in specific domains. They can perform actions or answer 
+        questions tailored to their expertise. You can mention a participant using the @ symbol."
+
+    # TODO Add tip: GitHub Copilot may infer a relevant chat participant based on the context of your question even
+    # if you haven't explicitly mentioned the participant you want to use in your prompt.
+
+    gingerbot "I support several participants, such as the @workspace which has context about the code in your 
+        workspace, or the @terminal participant that has context about the integrated terminal and its contents."
+
+    player "I got it! Participants help you understand the context and intent of the question."
+
+    player "{i}(I can see the supported participants by typing @ in the chat... This is getting interesting!){/i}"
+
+    # TODO Check if a quiz about chat participants can be added here
+
+    gingerbot "Slash commands are shortcuts to specific functionality provided by chat participants and help me 
+        understand your intent. To use a slash command, type / followed by the command name."
+
+    player "So, I can use slash commands to avoid typing long sentences for common actions!"
+
+    player "{i}(Oh, I could use a slash command to get the explanation faster...){/i}"
+
+    menu slash_command_for_code_explanation:
+        player "{i}(What command could I have used to get the explanation previously?){/i}"
+
+        "@terminal /explain":
+            player "{i}(That seems like a good guess, but not quite right... I am not in the terminal. 
+                Let's try again.){/i}"
+            jump slash_command_for_code_explanation
+
+        "@workspace /describe":
+            player "{i}(Oh, it seems that it's not a valid command... I feel like I'm close. I'll try again.){/i}"
+            jump slash_command_for_code_explanation
+
+        "@santa /makeCookies":
+            player "{i}(Cookies are always a good idea, but not for a slash command... Let's try again.){/i}"
+            jump slash_command_for_code_explanation
+
+        "@workspace /explain":
+            player "{i}(That's it! I could have used the /explain command to get the explanation. 
+                I'll remember that.){/i}"
+    
+    gingerbot "That's the idea! Shash commands help you interact with me more efficiently. Try using /tests or 
+        /new to see what happens."
+    
+    gingerbot "Chat variables add additional context to your question. You can use chat variables to refer to 
+        specific parts of your code or terminal contents."
+    
+    player "And I can see the available chat variables by typing # in the chat, right?"
+
+    gingerbot "Exactly! You're getting the hang of it."
+
+    menu chat_variable_for_selection:
+        gingerbot "Which chat variable would you use to refer to the highlighted code in the editor?"
+
+        "#file":
+            gingerbot "Not quite right. The #file variable includes a specific file as context in the chat. Let's 
+                try again."
+            jump chat_variable_for_selection
+
+        "#cookie":
+            gingerbot "I like where your head is at, but the #cookie variable doesn't exist. Let's try again."
+            jump chat_variable_for_selection
+
+        "#selection":
+            gingerbot "That's correct! The #selection variable refers to the current selection in the active editor. 
+                You're doing great!"
+
+        "#editor":
+            gingerbot "Close enough. The #editor variable adds the visible source code in the active editor as context 
+                in the chat. Let's try again."
+            jump chat_variable_for_selection
+
+    # TODO Add an achievement for learning about GitHub Copilot Chat keywords
+
+label explore_github_copilot_inline_chat:
+    gingerbot "Great job, [player_name]! Now, let's try the Inline Chat. I couldn't be your pair programmer without it."
+
+    player "Can I talk to you directly in the code editor?"
+
+    gingerbot "Yes! You can ask me questions, get explanations, and receive suggestions directly in the code editor."
+
+    gingerbot "With Inline Chat, you can preview code suggestions directly within your code without switching to the 
+        chat panel."
+
+    player "That sounds really convenient! I could quickly ask a question and continue coding without interruptions."
+
+    gingerbot "And you can also use some of the chat commands and variables we discussed earlier to give me more context."
+
+    player "{i}(I should try this out!){/i}"
+
+    player "{i}(I can select the code, open the chat using Ctrl+I and ask for an explanation...){/i}"
+
+    player "{i}(I can even use the /explain command to get the explanation faster.){/i}"
+
+    gingerbot "To make it easier to use Copilot features, there are Smart Actions that provide quick access to common tasks."
+
+    gingerbot "You can select a piece of code, right-click, and choose your desired action from the {b}Copilot{/b} menu."
+
+    player "That's really handy! I can ask for an explanation with just a few clicks."
+
+label explore_github_copilot_quick_chat:
+    menu github_copilot_quick_chat:
+        gingerbot "There's one more place where you can find me in Visual Studio Code. Can you spot it?"
+
+        "In the Christmas tree?":
+            gingerbot "Haha, not quite! But good guess. Let's try again."
+            jump github_copilot_quick_chat
+
+        "In the Smart Chat?":
+            gingerbot "Close! But not quite... There's no Smart Chat. Let's try again."
+            jump github_copilot_quick_chat
+
+        "In a Cookie?":
+            gingerbot "I wish! But no, I'm not in a cookie. Let's try again."
+            jump github_copilot_quick_chat
+
+        "In the Quick Chat?":
+            gingerbot "Bingo! You found me in the Quick Chat."
+
+    gingerbot "The Quick Chat is a convenient way to ask me a quick question and get back to coding without interruptions."
+
+# TODO Add outro for this section
