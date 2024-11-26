@@ -56,7 +56,7 @@ label get_started_with_github_copilot:
     gingerbot "Yes, I analyze the code you're working on in various ways to provide the best suggestions. 
         You will learn more about this as we progress through the game."
 
-    gingerbot "To summarize, remember the four rules: {b}Single, Specific, Short, and Surround.{/b}. Follow these 
+    gingerbot "To summarize, remember the four rules: {b}Single, Specific, Short, and Surround{/b}. Follow these 
         guidelines, and we'll make a great team!"
 
     player "Thanks, GingerBot! That makes a lot of sense. I'm ready to give it a try!"
@@ -163,8 +163,8 @@ label explore_github_copilot_features:
 
     player "That sounds really helpful! How do I use it?"
 
-    gingerbot "It's simple. Just start typing, and when you see a suggestion you like, press the {b}Tab{/b} key to 
-        accept it. If you're not sure about a suggestion, you can even browse alternatives."
+    gingerbot "It's simple. Just start typing, and when you see a suggestion you like, press the {code}Tab{/code} key 
+        to accept it. If you're not sure about a suggestion, you can even browse alternatives."
 
     player "That's pretty neat! Can you show me an example?"
 
@@ -181,10 +181,10 @@ label explore_github_copilot_features:
     # TODO Add a different font for code snippets
 
     gingerbot "Start typing the following function definition:
-        \ndef calculate_days_between_dates(start_date, end_date):"
+        \n{code}def calculate_days_between_dates(start_date, end_date):{/code}"
 
     gingerbot "As you type, I'll suggest the rest of the function in dimmed gray text. You can accept the 
-        suggested code by pressing the {b}Tab{/b} key."
+        suggested code by pressing the {code}Tab{/code} key."
 
     menu:
         "I typed the function definition and saw a suggestion. What should I do next?":
@@ -208,7 +208,7 @@ label explore_github_copilot_features:
 
     player "Wow, that sounds powerful! I'm ready to try it out."
 
-    gingerbot "Delete the function body and press {b}Enter{/b} to add a new line after the function definition. 
+    gingerbot "Delete the function body and press {code}Enter{/code} to add a new line after the function definition. 
         You should see a suggestion for the function body appear."
 
     gingerbot "If nothing shows up, don't worry! Just retype the function definition as you did before."
@@ -247,10 +247,10 @@ label explore_github_copilot_features:
 
         "I'm not sure how to add a hint.":
             gingerbot "No problem! Let's try it together. Suppose you want to specify that the start and end dates 
-                are of type datetime."
+                are of type {code}datetime{/code}."
 
             gingerbot "Here's an example with type annotations:
-                \ndef calculate_days_between_dates(start_date: datetime, end_date: datetime) -> int:"
+                \n{code}def calculate_days_between_dates(start_date: datetime, end_date: datetime) -> int:{/code}"
 
             menu:
                 "Got it! I'll give it a try now.":
@@ -261,7 +261,7 @@ label explore_github_copilot_features:
 
                 "Yes, show me another example.":
                     gingerbot "Sure! Let's try adding the following comment in a new line:
-                        \n# Function to calculate the days between two dates provided as strings in a specific format"
+                        \n{code}# Function to calculate the days between two dates provided as strings in a specific format{/code}"
 
                     gingerbot "You will see how I adjust my suggestions based on the context you provide."
 
@@ -379,22 +379,24 @@ label intro_to_github_copilot_chat_keywords:
     gingerbot "Let's break it down."
 
     gingerbot "Participants are like experts specializing in specific domains. They can perform actions or answer 
-        questions tailored to their expertise. You can mention a participant using the @ symbol."
+        questions tailored to their expertise. You can mention a participant using the {code}@{/code} symbol."
 
     # TODO Add tip: GitHub Copilot may infer a relevant chat participant based on the context of your question even
     # if you haven't explicitly mentioned the participant you want to use in your prompt.
 
-    gingerbot "I support several participants, such as the @workspace which has context about the code in your 
-        workspace, or the @terminal participant that has context about the integrated terminal and its contents."
+    gingerbot "I support several participants, such as the {code}@workspace{/code} which has context about the code 
+        in your workspace, or the {code}@terminal{/code} participant that has context about the integrated terminal 
+        and its contents."
 
     player "I got it! Participants help you understand the context and intent of the question."
 
-    player "{i}(I can see the supported participants by typing @ in the chat... This is getting interesting!){/i}"
+    player "{i}(I can see the supported participants by typing {code}@{/code} in the chat... This is getting 
+        interesting!){/i}"
 
     # TODO Check if a quiz about chat participants can be added here
 
     gingerbot "Slash commands are shortcuts to specific functionality provided by chat participants and help me 
-        understand your intent. To use a slash command, type / followed by the command name."
+        understand your intent. To use a slash command, type {code}/{/code} followed by the command name."
 
     player "So, I can use slash commands to avoid typing long sentences for common actions!"
 
@@ -417,37 +419,37 @@ label intro_to_github_copilot_chat_keywords:
             jump slash_command_for_code_explanation
 
         "@workspace /explain":
-            player "{i}(That's it! I could have used the /explain command to get the explanation. 
+            player "{i}(That's it! I could have used the {code}/explain{/code} command to get the explanation. 
                 I'll remember that.){/i}"
-    
-    gingerbot "That's the idea! Shash commands help you interact with me more efficiently. Try using /tests or 
-        /new to see what happens."
-    
+
+    gingerbot "That's the idea! Shash commands help you interact with me more efficiently. Try using {code}/tests{/code} 
+        or {code}/new{/code} to see what happens."
+
     gingerbot "Chat variables add additional context to your question. You can use chat variables to refer to 
         specific parts of your code or terminal contents."
-    
-    player "And I can see the available chat variables by typing # in the chat, right?"
 
-    gingerbot "Exactly! You're getting the hang of it."
+    player "And I can see the available chat variables by typing {code}#{/code} in the chat, right?"
+
+    gingerbot "That's right! You're doing great."
 
     menu chat_variable_for_selection:
         gingerbot "Which chat variable would you use to refer to the highlighted code in the editor?"
 
         "#file":
-            gingerbot "Not quite right. The #file variable includes a specific file as context in the chat. Let's 
-                try again."
+            gingerbot "Not quite right. The {code}#file{/code} variable includes a specific file as context in the chat. 
+                Let's try again."
             jump chat_variable_for_selection
 
         "#cookie":
-            gingerbot "I like where your head is at, but the #cookie variable doesn't exist. Let's try again."
+            gingerbot "I like where your head is at, but the {code}#cookie{/code} variable doesn't exist. Let's try again."
             jump chat_variable_for_selection
 
         "#selection":
-            gingerbot "That's correct! The #selection variable refers to the current selection in the active editor. 
+            gingerbot "That's correct! The {code}#selection{/code} variable refers to the current selection in the active editor. 
                 You're doing great!"
 
         "#editor":
-            gingerbot "Close enough. The #editor variable adds the visible source code in the active editor as context 
+            gingerbot "Close enough. The {code}#editor{/code} variable adds the visible source code in the active editor as context 
                 in the chat. Let's try again."
             jump chat_variable_for_selection
 
@@ -469,9 +471,9 @@ label explore_github_copilot_inline_chat:
 
     player "{i}(I should try this out!){/i}"
 
-    player "{i}(I can select the code, open the chat using Ctrl+I and ask for an explanation...){/i}"
+    player "{i}(I can select the code, open the chat using {code}Ctrl+I{/code} and ask for an explanation...){/i}"
 
-    player "{i}(I can even use the /explain command to get the explanation faster.){/i}"
+    player "{i}(I can even use the {code}/explain{/code} command to get the explanation faster.){/i}"
 
     gingerbot "To make it easier to use Copilot features, there are Smart Actions that provide quick access to common tasks."
 
