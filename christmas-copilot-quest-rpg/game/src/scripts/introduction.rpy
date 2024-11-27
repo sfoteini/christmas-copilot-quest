@@ -1,10 +1,10 @@
 label introduction:
     felix "Ah, you must be the new coder Santa called for! What's your name?"
 
-    $ player_name = renpy.input(_("(Type your name and hit Enter. This name will be used throughout the game.)"))
-    $ player_name = player_name.strip()
-
-    # TODO Handle empty input and assign a default name
+    $ player_input = renpy.input(
+        _("(Type your name and press Enter, or press Enter to use the default name, [character_name].)")
+    )
+    $ player_name = character_utils.determine_player_name(player_input)
 
     felix "Nice to meet you, [player_name]!"
     felix "It's December, and the North Pole is buzzing with activity. We're working hard to get all 
