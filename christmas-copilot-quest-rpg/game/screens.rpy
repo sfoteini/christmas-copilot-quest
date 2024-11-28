@@ -247,16 +247,14 @@ screen quick_menu():
             style_prefix "quick"
 
             xalign 0.5
-            yalign 1.0
+            yalign 0.98
 
-            textbutton _("Back") action Rollback()
-            textbutton _("History") action ShowMenu('history')
-            textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
-            textbutton _("Auto") action Preference("auto-forward", "toggle")
-            textbutton _("Save") action ShowMenu('save')
-            textbutton _("Q.Save") action QuickSave()
-            textbutton _("Q.Load") action QuickLoad()
-            textbutton _("Prefs") action ShowMenu('preferences')
+            textbutton _("{icon=skip-back} Back") action Rollback()
+            textbutton _("{icon=map} History") action ShowMenu('history')
+            textbutton _("{icon=fast-forward} Skip") action Skip() alternate Skip(fast=True, confirm=True)
+            textbutton _("{icon=play-circle} Auto") action Preference("auto-forward", "toggle")
+            textbutton _("{icon=save} Save") action ShowMenu('save')
+            textbutton _("{icon=settings} Settings") action ShowMenu('preferences')
 
 
 ## This code ensures that the quick_menu screen is displayed in-game, whenever
@@ -296,39 +294,31 @@ screen navigation():
         spacing gui.navigation_spacing
 
         if main_menu:
-
-            textbutton _("Start") action Start()
+            textbutton _("{icon=play} New Game") action Start()
 
         else:
+            textbutton _("{icon=map} History") action ShowMenu("history")
+            textbutton _("{icon=save} Save") action ShowMenu("save")
 
-            textbutton _("History") action ShowMenu("history")
-
-            textbutton _("Save") action ShowMenu("save")
-
-        textbutton _("Load") action ShowMenu("load")
-
-        textbutton _("Preferences") action ShowMenu("preferences")
+        textbutton _("{icon=upload} Load Game") action ShowMenu("load")
+        textbutton _("{icon=settings} Settings") action ShowMenu("preferences")
 
         if _in_replay:
-
-            textbutton _("End Replay") action EndReplay(confirm=True)
+            textbutton _("{icon=stop-circle} End Replay") action EndReplay(confirm=True)
 
         elif not main_menu:
+            textbutton _("{icon=menu} Main Menu") action MainMenu()
 
-            textbutton _("Main Menu") action MainMenu()
-
-        textbutton _("About") action ShowMenu("about")
+        textbutton _("{icon=info} About") action ShowMenu("about")
 
         if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
-
             ## Help isn't necessary or relevant to mobile devices.
-            textbutton _("Help") action ShowMenu("help")
+            textbutton _("{icon=help-circle} Help") action ShowMenu("help")
 
         if renpy.variant("pc"):
-
             ## The quit button is banned on iOS and unnecessary on Android and
             ## Web.
-            textbutton _("Quit") action Quit(confirm=not main_menu)
+            textbutton _("{icon=x-circle} Quit Game") action Quit(confirm=not main_menu)
 
 
 style navigation_button is gui_button
@@ -554,16 +544,14 @@ screen about():
 
         style_prefix "about"
 
-        vbox:
+        vbox spacing 10:
 
             label "[config.name!t]"
             text _("Version [config.version!t]\n")
 
-            ## gui.about is usually set in options.rpy.
-            if gui.about:
-                text "[gui.about!t]\n"
+            text gui.about
 
-            text _("Made with {a=https://www.renpy.org/}Ren'Py{/a} [renpy.version_only].\n\n[renpy.license!t]")
+            text _("Made with {a=https://www.renpy.org/}Ren'Py{/a} [renpy.version_only].")
 
 
 style about_label is gui_label
@@ -571,7 +559,8 @@ style about_label_text is gui_label_text
 style about_text is gui_text
 
 style about_label_text:
-    size gui.label_text_size
+    size gui.name_text_size
+    bold True
 
 
 ## Load and Save screens #######################################################
@@ -677,16 +666,6 @@ screen file_slots(title):
                     textbutton _(">") action FilePageNext()
                     key "save_page_next" action FilePageNext()
 
-                if config.has_sync:
-                    if CurrentScreenName() == "save":
-                        textbutton _("Upload Sync"):
-                            action UploadSync()
-                            xalign 0.5
-                    else:
-                        textbutton _("Download Sync"):
-                            action DownloadSync()
-                            xalign 0.5
-
 
 style page_label is gui_label
 style page_label_text is gui_label_text
@@ -731,7 +710,7 @@ screen preferences():
 
     tag menu
 
-    use game_menu(_("Preferences"), scroll="viewport"):
+    use game_menu(_("Settings"), scroll="viewport"):
 
         vbox:
 
@@ -1218,9 +1197,9 @@ screen skip_indicator():
 
             text _("Skipping")
 
-            text "▸" at delayed_blink(0.0, 1.0) style "skip_triangle"
-            text "▸" at delayed_blink(0.2, 1.0) style "skip_triangle"
-            text "▸" at delayed_blink(0.4, 1.0) style "skip_triangle"
+            text "{icon=chevron-right}" at delayed_blink(0.0, 1.0)
+            text "{icon=chevron-right}" at delayed_blink(0.2, 1.0)
+            text "{icon=chevron-right}" at delayed_blink(0.4, 1.0)
 
 
 ## This transform is used to blink the arrows one after another.
@@ -1239,7 +1218,6 @@ transform delayed_blink(delay, cycle):
 
 style skip_frame is empty
 style skip_text is gui_text
-style skip_triangle is skip_text
 
 style skip_frame:
     ypos gui.skip_ypos
@@ -1248,11 +1226,6 @@ style skip_frame:
 
 style skip_text:
     size gui.notify_text_size
-
-style skip_triangle:
-    ## We have to use a font that has the BLACK RIGHT-POINTING SMALL TRIANGLE
-    ## glyph in it.
-    font "DejaVuSans.ttf"
 
 
 ## Notify screen ###############################################################
@@ -1435,10 +1408,10 @@ screen quick_menu():
             xalign 0.5
             yalign 1.0
 
-            textbutton _("Back") action Rollback()
-            textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
-            textbutton _("Auto") action Preference("auto-forward", "toggle")
-            textbutton _("Menu") action ShowMenu()
+            textbutton _("{icon=skip-back} Back") action Rollback()
+            textbutton _("{icon=fast-forward} Skip") action Skip() alternate Skip(fast=True, confirm=True)
+            textbutton _("{icon=play-circle} Auto") action Preference("auto-forward", "toggle")
+            textbutton _("{icon=menu} Menu") action ShowMenu()
 
 
 style window:
