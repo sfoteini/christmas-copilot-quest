@@ -18,3 +18,10 @@ init python in font_enumerations:
         REGULAR = "fonts/roboto_mono/RobotoMono-Regular.ttf"
         BOLD = "fonts/roboto_mono/RobotoMono-Bold.ttf"
         ITALIC = "fonts/roboto_mono/RobotoMono-Italic.ttf"
+
+    class IconFont(Enum):
+        """
+        The file paths for the icon font used in the game.
+        """
+
+        FEATHER_ICONS = "fonts/feather_icons/FeatherIcons.ttf"
