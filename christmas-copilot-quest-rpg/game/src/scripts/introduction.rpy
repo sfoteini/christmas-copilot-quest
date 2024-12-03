@@ -1,4 +1,6 @@
 label introduction:
+    show felix
+
     felix "Ah, you must be the new coder Santa called for! What's your name?"
 
     $ player_input = renpy.input(
