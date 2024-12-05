@@ -1,4 +1,3 @@
-# TODO A simpler transform might be better
 transform character_card_selection:
     on hover:
         easein 0.3 ypos 40
@@ -10,6 +9,7 @@ transform character_card_selection:
 # options. It is displayed when the player starts a new game.
 screen character_selection_menu():
     tag character_selection_menu
+    style_prefix "character_selection_menu"
 
     add "images/backgrounds/character_selection_screen.png"
 
@@ -18,8 +18,7 @@ screen character_selection_menu():
         xpos 160
         ypos 80
 
-        # TODO Add better styling for the text
-        text "Choose your character" size 50 color "#ffffff"
+        text "Choose your character"
 
         hbox:
             spacing 125
@@ -41,3 +40,9 @@ screen character_selection_menu():
                 hover "images/characters/cards/carey_card.png"
                 action [Function(character_utils.initialize_variables_for_carey), Return()]
                 at character_card_selection
+
+
+style character_selection_menu_text:
+    size gui.title_text_size
+    color gui.accent_color
+    xalign 0.5
