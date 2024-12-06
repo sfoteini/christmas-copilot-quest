@@ -1,10 +1,3 @@
-transform character_card_selection:
-    on hover:
-        easein 0.3 ypos 40
-    on idle:
-        easein 0.3 ypos 0
-
-
 # The character selection screen allows the player to choose their preferred character from a list of available
 # options. It is displayed when the player starts a new game.
 screen character_selection_menu():
@@ -46,3 +39,11 @@ style character_selection_menu_text:
     size gui.title_text_size
     color gui.accent_color
     xalign 0.5
+
+
+# This transform is used to animate the character cards when hovered over.
+transform character_card_selection:
+    on hover:
+        easein 0.3 ypos 40
+    on idle:
+        easein 0.3 ypos 0
