@@ -43,3 +43,13 @@ init 1 python:
         :return: The number of achievements that the player has unlocked.
         """
         return len(persistent.achievements)
+
+    def is_achievement_unlocked(achievement_title: AchievementTitle) -> bool:
+        """
+        Returns whether or not the player has unlocked a specific achievement.
+
+        :param achievement_title: The title of the achievement to check.
+
+        :return: True if the player has unlocked the achievement, False otherwise.
+        """
+        return achievement_title.value in persistent.achievements
