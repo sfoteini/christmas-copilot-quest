@@ -1,6 +1,7 @@
 label get_started_with_github_copilot:
-    # TODO Add background image
-    scene bg room
+    # TODO Add VS Code screenshots for each scenario
+
+    scene computer_bg with dissolve
 
     gingerbot "Hello, [player_name]! I'm GingerBot, your AI assistant powered by GitHub Copilot. 
         I'm here to help you with your coding tasks."

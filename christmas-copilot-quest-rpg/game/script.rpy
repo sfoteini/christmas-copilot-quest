@@ -1,8 +1,7 @@
 ﻿label start:
     call screen character_selection_menu with fade
 
-    # TODO Add background image for North Pole workshop
-    scene bg room
+    scene christmas_village_bg with dissolve
 
     "Welcome to the Santa's Lab!"
 

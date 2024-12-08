@@ -1,5 +1,6 @@
 label introduction:
-    show felix
+    scene company_bg with dissolve
+    show felix with dissolve
 
     felix "Ah, you must be the new coder Santa called for! What's your name?"
 
