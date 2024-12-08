@@ -65,6 +65,9 @@ define gui.name_text_font = "fonts/lato/Lato-Regular.ttf"
 ## The font used for out-of-game text.
 define gui.interface_text_font = "fonts/lato/Lato-Regular.ttf"
 
+## The font used for labels in the game's main menu.
+define gui.main_menu_button_text_font = "fonts/orbitron/Orbitron-Regular.ttf"
+
 ## The size of normal dialogue text.
 define gui.text_size = 33
 

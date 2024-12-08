@@ -338,47 +338,45 @@ screen main_menu_navigation():
 
         xalign 0.5
         yalign 0.92
-        spacing 40
+        spacing 35
 
-        textbutton _("New Game") action Start():
-            background "gui/button/button_green_idle.png"
-            hover_background "gui/button/button_green_hover.png"
+        textbutton _("New Game") action Start()
+        text "/"
 
         textbutton _("Load Game") action ShowMenu("load")
+        text "/"
 
         textbutton _("Settings") action ShowMenu("preferences")
+        text "/"
 
         textbutton _("About") action ShowMenu("about")
+        text "/"
 
         if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
             ## Help isn't necessary or relevant to mobile devices.
             textbutton _("Help") action ShowMenu("help")
+            text "/"
 
         if renpy.variant("pc"):
             ## The quit button is banned on iOS and unnecessary on Android and
             ## Web.
-            textbutton _("Quit Game") action Quit(confirm=not main_menu):
-                background "gui/button/button_red_idle.png"
-                hover_background "gui/button/button_red_hover.png"
+            textbutton _("Quit Game") action Quit(confirm=not main_menu)
 
 
 style main_menu_navigation_button is gui_button
 style main_menu_navigation_button_text is gui_button_text
 
+style main_menu_navigation_text:
+    font gui.main_menu_button_text_font
+
 style main_menu_navigation_button:
-    size_group "navigation"
     properties gui.button_properties("navigation_button")
-    background "gui/button/button_blue_idle.png"
-    hover_background "gui/button/button_blue_hover.png"
-    xsize 240
-    ysize 80
 
 style main_menu_navigation_button_text:
     properties gui.button_text_properties("navigation_button")
-    idle_color gui.choice_button_text_hover_color
-    hover_color gui.choice_button_text_hover_color
-    text_align 0.5
-    xalign 0.5
+    idle_color gui.text_color
+    hover_color gui.hover_color
+    font gui.main_menu_button_text_font
 
 
 ## Main Menu screen ############################################################
