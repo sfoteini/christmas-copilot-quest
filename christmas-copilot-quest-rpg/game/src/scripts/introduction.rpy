@@ -9,21 +9,31 @@ label introduction:
     )
     $ player_name = character_utils.determine_player_name(player_input)
 
-    felix "Nice to meet you, [player_name]!"
-    felix "It's December, and the North Pole is buzzing with activity. We're working hard to get all 
-        the toys ready for Christmas. But there's a problem..."
+    player "I'm [player_name]."
+
+    felix "Nice to meet you, [player_name]! I'm Felix, a senior Software Engineer here at Santa's Lab."
+
+    player "Nice to meet you too, Felix! It looks like a busy time here at the North Pole."
+
+    felix "It's December, and we're working hard to get all the toys ready for Christmas. But there's a problem..."
     felix "The toy tracking system is down! We can't keep track of the toys we're making, and we're falling 
         behind schedule. Santa needs your help to fix it!"
     felix "So, are you ready to help us save Christmas?"
 
-    player "Yes, I'm ready!"
+    player "Yes, I'm ready to help!"
 
     felix "Great! We need to build a quick toy tracking system to get us through the holiday season."
-    felix "You have 3 days to develop a temporary solution that will allow us to track the toys we're making."
+    felix "Santa understands there isn't much time for a fancy interface, but he stresses that the application
+        must be reliable and easy to use."
 
-    player "Ah, I'm not sure I can do that in 3 days..."
+    player "How much time do we have to build this system?"
 
-    felix "Don't worry, you won't be alone! Our AI assistant, GitHub Copilot, will help you along the way."
+    felix "We have a tight deadline of 3 days to create a temporary toy tracking system."
+
+    player "Three days? That sounds impossible..."
+
+    felix "Don't worry, you'll have some help. We'll be using GitHub Copilot, an AI-powered coding assistant, 
+        to speed up the development process."
 
     menu:
         felix "Are you ready to get started?"
