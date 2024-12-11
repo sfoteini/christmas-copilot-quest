@@ -435,7 +435,7 @@ label intro_to_github_copilot_chat_keywords:
 
     player "So, I can use slash commands to avoid typing long sentences for common actions!"
 
-    gingerbot "That's the idea! Shash commands help you interact with me more efficiently. Try using {code}/tests{/code} 
+    gingerbot "That's the idea! Slash commands help you interact with me more efficiently. Try using {code}/tests{/code} 
         or {code}/new{/code} to see what happens."
 
     player "{i}(Oh, I could use a slash command to get the explanation faster...){/i}"
@@ -502,7 +502,6 @@ label explore_github_copilot_inline_chat:
     player "Can I talk to you directly in the code editor?"
 
     gingerbot "Yes! You can ask me questions, get explanations, and receive suggestions directly in the code editor."
-
     gingerbot "With Inline Chat, you can preview code suggestions directly within your code without switching to the 
         chat panel."
 
@@ -511,11 +510,58 @@ label explore_github_copilot_inline_chat:
     gingerbot "And you can also use some of the chat commands and variables we discussed earlier to give me more context."
 
     player "{i}(I should try this out!){/i}"
-
     player "{i}(I can select the code, open the chat using {code}Ctrl+I{/code} and ask for an explanation...){/i}"
-
     player "{i}(I can even use the {code}/explain{/code} command to get the explanation faster.){/i}"
 
+    player "But what's the difference between Inline Chat and the regular chat panel?"
+
+    gingerbot "Great question! Inline Chat is perfect for quick questions as you write or iterate your code. 
+        Suggestions appear directly in the editor."
+    gingerbot "The Chat panel, on the other hand, is designed for in-depth conversations, like multi-file and 
+        and project-wise questions."
+
+    player "Got it! I can use Inline Chat for quick questions and the Chat panel for more detailed discussions."
+
+    menu inline_chat_doc:
+        gingerbot "Let's test it out. The function you wrote earlier doesn't have a description. 
+            How would you generate one using Inline Chat?"
+
+        "Open the chat with Ctrl+Alt+I and use the /doc command of @workspace.":
+            player "I'll open the chat using {code}Ctrl+Alt+I{/code} and use the {code}/doc{/code} command of the 
+                {code}@workspace{/code} participant."
+
+            gingerbot "Close, but not quite. The {code}Ctrl+Alt+I{/code} shortcut typically opens the chat panel, 
+                not the Inline Chat."
+            gingerbot "Also, the {code}/doc{/code} command isn't part of {code}@workspace{/code} participant. 
+                Let's try again."
+
+            jump inline_chat_doc
+
+        "Open the chat with Ctrl+I and use the /explain command.":
+            player "I'll open the chat using {code}Ctrl+I{/code} and use the {code}/explain{/code} command."
+
+            gingerbot "You're on the right track! The {code}/explain{/code} command works, but it generates an explanation 
+                in conversational style rather than a formatted docstring. Let's give it another try."
+
+            jump inline_chat_doc
+
+        "No need to generate a description. I'll skip this step.":
+            player "I'll skip generating a description for now."
+
+            gingerbot "Oh, no skipping! Code documentation is a must in Santa's Lab. Let's try again."
+
+            jump inline_chat_doc
+
+        "Open the chat with Ctrl+I and use the /doc command.":
+            player "I'll open the chat using {code}Ctrl+I{/code} and use the {code}/doc{/code} command."
+
+            gingerbot "That's correct! The {code}/doc{/code} command generates a docstring for the selected code."
+            gingerbot "You can even customize it by adding a short prompt for the style, like reST. The docstring will 
+                appear directly in the editor."
+
+    $ add_achievement_and_display_notification(AchievementTitle.USE_GITHUB_COPILOT_INLINE_CHAT)
+
+label explore_github_copilot_smart_actions:
     gingerbot "To make it easier to use Copilot features, there are Smart Actions that provide quick access to common tasks."
 
     gingerbot "You can select a piece of code, right-click, and choose your desired action from the {b}Copilot{/b} menu."
