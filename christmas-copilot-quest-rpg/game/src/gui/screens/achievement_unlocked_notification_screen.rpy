@@ -21,9 +21,13 @@ screen achievement_unlocked_notification(achievement_title, num_achievements_unl
 
             text _(achievement_title)
 
-            text _("Number of Achievements Unlocked: [num_achievements_unlocked] / [num_achievements]")
+            text _("Number of achievements unlocked: [num_achievements_unlocked] / [num_achievements]")
 
-            textbutton _("Let's Unlock Them All!"):
+            textbutton _(
+                "Let's unlock them all!" if num_achievements_unlocked < num_achievements
+                else
+                "Congratulations! You've unlocked all achievements!"
+            ):
                 xalign 0.5
                 action Return()
 
