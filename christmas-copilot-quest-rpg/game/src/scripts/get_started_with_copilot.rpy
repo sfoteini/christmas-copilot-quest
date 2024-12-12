@@ -568,6 +568,27 @@ label explore_github_copilot_smart_actions:
 
     player "That's really handy! I can ask for an explanation with just a few clicks."
 
+    gingerbot "Exactly! You can use Smart Actions to generate documentation, ask for explanations, fix issues, and 
+        generate tests without typing any commands."
+    gingerbot "And here's a tip: you can use the {b}Review and Comment{/b} action to receive feedback on your code."
+
+    player "That sounds like a great way to get feedback on my code before committing it. How does it work?"
+
+    gingerbot "Simply select the code you want feedback on and choose the {b}Review and Comment{/b} action. 
+        I'll analyze it and suggest improvements or flag potential issues."
+    gingerbot "Any comments or code suggestions I generate will appear directly in the editor, making it easy 
+        for you to review them."
+
+    player "{i}(I should give this a try next time I review my code or even someone else's!){/i}"
+
+    gingerbot "Just remember to review the suggestions and comments before accepting them. I'm not perfect and can make mistakes!"
+    gingerbot "My suggestions might not match your coding guidelines, meet your project's requirements, or catch every 
+        potential issue."
+
+    player "Got it! It's always important to involve a human reviewer to ensure everything is on point."
+
+    $ add_achievement_and_display_notification(AchievementTitle.USE_GITHUB_COPILOT_CODE_REVIEW) 
+
 label explore_github_copilot_quick_chat:
     menu github_copilot_quick_chat:
         gingerbot "There's one more place where you can find me in Visual Studio Code. Can you spot it?"

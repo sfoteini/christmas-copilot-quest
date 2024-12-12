@@ -20,3 +20,6 @@ init -100 python in achievement_enumerations:
             "Use keywords to help GitHub Copilot understand your prompt: Chat participants, slash commands, and variables"
         )
         USE_GITHUB_COPILOT_INLINE_CHAT = _("Ask your first question to GitHub Copilot in the inline chat")
+        USE_GITHUB_COPILOT_CODE_REVIEW = _(
+            "Request a code review from GitHub Copilot using the {b}Review and Comment{/b} action"
+        )
