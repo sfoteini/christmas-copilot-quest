@@ -590,24 +590,42 @@ label explore_github_copilot_smart_actions:
     $ add_achievement_and_display_notification(AchievementTitle.USE_GITHUB_COPILOT_CODE_REVIEW) 
 
 label explore_github_copilot_quick_chat:
+    gingerbot "[player_name], we're almost done with the tour! But before we wrap up, I want to show you one 
+        last feature."
+
+    player "It's been a fun and informative sleigh ride so far! What's next?"
+
     menu github_copilot_quick_chat:
-        gingerbot "There's one more place where you can find me in Visual Studio Code. Can you spot it?"
+        gingerbot "There's one more place where you can chat with me in Visual Studio Code. Can you spot it?"
 
         "In the Christmas tree?":
-            gingerbot "Haha, not quite! But good guess. Let's try again."
+            player "Is it in the Christmas tree?"
+            gingerbot "Haha, not quite! I do love the festive vibe, though. Let's try again."
             jump github_copilot_quick_chat
 
         "In the Smart Chat?":
-            gingerbot "Close! But not quite... There's no Smart Chat. Let's try again."
+            player "Can I use the Smart Chat to talk to you?"
+            gingerbot "Close, but not quite... There's no Smart Chat. Let's try again."
             jump github_copilot_quick_chat
 
         "In a Cookie?":
+            player "Are you hiding in a cookie?"
             gingerbot "I wish! But no, I'm not in a cookie. Let's try again."
             jump github_copilot_quick_chat
 
         "In the Quick Chat?":
-            gingerbot "Bingo! You found me in the Quick Chat."
+            player "Can I talk to you in the Quick Chat?"
+            gingerbot "Bingo! That's right. You can find me in the Quick Chat."
 
     gingerbot "The Quick Chat is a convenient way to ask me a quick question and get back to coding without interruptions."
+    gingerbot "Think of it as a mini chat panel! It supports chat participants, variables, and slash commands, just like 
+        the main Chat panel."
+
+    player "That's really handy! I can use the Inline Chat for focused questions, the Quick Chat for quick interactions, 
+        and the Chat panel for in-depth and multi-step discussions."
+
+    gingerbot "Exactly! You can choose the chat interface that works best for your needs."
+
+    $ add_achievement_and_display_notification(AchievementTitle.USE_GITHUB_COPILOT_QUICK_CHAT)
 
 # TODO Add outro for this section

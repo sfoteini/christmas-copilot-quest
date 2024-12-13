@@ -23,3 +23,4 @@ init -100 python in achievement_enumerations:
         USE_GITHUB_COPILOT_CODE_REVIEW = _(
             "Request a code review from GitHub Copilot using the {b}Review and Comment{/b} action"
         )
+        USE_GITHUB_COPILOT_QUICK_CHAT = _("Ask a question to GitHub Copilot in the quick chat")
