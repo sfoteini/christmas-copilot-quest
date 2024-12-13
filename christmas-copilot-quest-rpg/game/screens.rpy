@@ -341,25 +341,25 @@ screen main_menu_navigation():
         spacing 35
 
         textbutton _("New Game") action Start()
-        text "/"
 
+        text "/"
         textbutton _("Load Game") action ShowMenu("load")
-        text "/"
 
+        text "/"
         textbutton _("Settings") action ShowMenu("preferences")
-        text "/"
 
-        textbutton _("About") action ShowMenu("about")
         text "/"
+        textbutton _("About") action ShowMenu("about")
 
         if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
             ## Help isn't necessary or relevant to mobile devices.
-            textbutton _("Help") action ShowMenu("help")
             text "/"
+            textbutton _("Help") action ShowMenu("help")
 
         if renpy.variant("pc"):
             ## The quit button is banned on iOS and unnecessary on Android and
             ## Web.
+            text "/"
             textbutton _("Quit Game") action Quit(confirm=not main_menu)
 
 

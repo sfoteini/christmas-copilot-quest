@@ -3,6 +3,7 @@ build/
 saves/
 persistent/
 cache/
+*-dists/
 *.rpyc
 *.rpa
 *.rpyb
