@@ -424,11 +424,44 @@ label intro_to_github_copilot_chat_keywords:
     player "{i}(I can see the supported participants by typing {code}@{/code} in the chat... This is getting 
         interesting!){/i}"
 
-    gingerbot "I may also infer a participant based on the context of your question, even if you haven't explicitly
-        mentioned the participant you want to use in your prompt. But this feature is still in preview."
+    gingerbot "If you're feeling confident, let's test your knowledge!"
 
-    # TODO Check if a quiz about chat participants can be added here
-    # TODO Mention custom participants via extensions, e.g. @azure
+    menu chat_participant_for_fixing_code:
+        gingerbot "Which participant would you use to ask for help fixing a bug in a Python function in your project?"
+
+        "@editor":
+            player "I would use the {code}@editor{/code} participant."
+            gingerbot "Good guess, but there is no {code}@editor{/code} participant. Let's try again."
+            jump chat_participant_for_fixing_code
+
+        "@workspace":
+            player "I would use the {code}@workspace{/code} participant."
+            gingerbot "That's correct! The {code}@workspace{/code} participant has context about the code in your
+                workspace and can help you fix bugs in your project."
+
+        "@santa":
+            player "I would ask {code}@santa{/code} for help fixing the bug."
+            gingerbot "Haha, Santa is busy preparing for Christmas! Let's try again."
+            jump chat_participant_for_fixing_code
+
+        "@terminal":
+            player "I would use the {code}@terminal{/code} participant."
+            gingerbot "Not quite! The {code}@terminal{/code} participant has context about the integrated terminal
+                and its contents. Let's try again."
+            jump chat_participant_for_fixing_code
+
+    gingerbot "Great job! Here's something else to know:"
+    gingerbot "I can infer a participant based on the context of your question, even if you haven't explicitly
+        mentioned the participant you want to use in your prompt. But this feature is still in preview."
+    gingerbot "In addition to built-in chat participants, you can install Chat extensions that provide custom chat 
+        participants, or even create your own for specialized workflows."
+
+    player "Custom chat participants? This opens up a lot of possibilities for integrating Copilot with other tools."
+
+    gingerbot "Exactly! For instance, by installing the GitHub Copilot for Azure extension, you can use the 
+        {code}@azure{/code} participant to interact with Azure services."
+
+    player "{i}(I should explore the available extensions to see what other participants I can use.){/i}"
 
     gingerbot "Slash commands are shortcuts to specific functionality provided by chat participants and help me 
         understand your intent. To use a slash command, type {code}/{/code} followed by the command name."
