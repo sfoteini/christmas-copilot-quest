@@ -1,0 +1,96 @@
+name: Build Ren'Py Web Game
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - christmas-copilot-quest-rpg/**
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      RENPY_VERSION: 8.3.3
+      RENPY_PROJECT_PATH: christmas-copilot-quest-rpg
+      RENPY_WEB_APP_PATH: christmas-copilot-quest-web
+      MAIN_BRANCH: main
+      WEB_APP_BRANCH: gh-pages
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.MAIN_BRANCH }}
+          path: ${{ env.MAIN_BRANCH }}
+
+      - name: Initialize gh-pages branch
+        run: |
+          cd $MAIN_BRANCH
+
+          git config user.name "${GITHUB_ACTOR}"
+          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+
+          if git ls-remote --exit-code --heads origin $WEB_APP_BRANCH; then
+            echo "Branch $WEB_APP_BRANCH exists"
+          else
+            echo "Branch $WEB_APP_BRANCH does not exist, creating it"
+            git checkout --orphan $WEB_APP_BRANCH
+            git rm -rf .
+            git commit --allow-empty -m "Initial commit"
+            git push origin $WEB_APP_BRANCH
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Checkout gh-pages branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.WEB_APP_BRANCH }}
+          path: ${{ env.WEB_APP_BRANCH }}
+
+      - name: Set Up Ren'Py CLI
+        run: |
+          wget -nv https://www.renpy.org/dl/$RENPY_VERSION/renpy-$RENPY_VERSION-sdk.tar.bz2
+          tar -xf ./renpy-$RENPY_VERSION-sdk.tar.bz2
+          rm ./renpy-$RENPY_VERSION-sdk.tar.bz2
+          mv ./renpy-$RENPY_VERSION-sdk ./renpy
+
+      - name: Set Up Ren'Py Web CLI
+        run: |
+          wget -nv https://www.renpy.org/dl/$RENPY_VERSION/renpy-$RENPY_VERSION-web.zip
+          unzip ./renpy-$RENPY_VERSION-web.zip
+          rm ./renpy-$RENPY_VERSION-web.zip
+          mv ./web ./renpy
+
+      - name: Lint project
+        run: ./renpy/renpy.sh ./$MAIN_BRANCH/$RENPY_PROJECT_PATH lint
+
+      - name: Build project
+        run: ./renpy/renpy.sh ./renpy/launcher web_build ./$MAIN_BRANCH/$RENPY_PROJECT_PATH --destination ./$MAIN_BRANCH/$RENPY_WEB_APP_PATH
+
+      - name: Delete existing files in gh-pages branch
+        run: rm -rf ./$WEB_APP_BRANCH/*
+
+      - name: Copy generated files to gh-pages branch
+        run: cp -rf ./$MAIN_BRANCH/$RENPY_WEB_APP_PATH/* ./$WEB_APP_BRANCH/
+
+      - name: Commit and push to gh-pages branch
+        run: |
+          cd $WEB_APP_BRANCH
+
+          git config user.name "${GITHUB_ACTOR}"
+          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+
+          git add --all .
+
+          if git diff-index --quiet HEAD --; then
+            echo "No changes to commit"
+          else
+            git commit -m "build: $GITHUB_SHA"
+            git push -f origin $WEB_APP_BRANCH
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
