@@ -1,4 +1,8 @@
 init 1 python:
+    """
+    Definitions for the fonts used in the game.
+    """
+
     from store.font_enumerations import BaseFont, MonospaceFont, IconFont
     from store.font_utils import install_font_family
 

@@ -1,4 +1,8 @@
 init 1 python in character_utils:
+    """
+    Utility functions for managing characters in the game.
+    """
+
     import renpy.store
 
     def determine_player_name(player_input: str) -> str:

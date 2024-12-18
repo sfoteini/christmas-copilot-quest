@@ -1,4 +1,8 @@
 init 1 python:
+    """
+    Definitions for the custom text tags used in the game.
+    """
+
     from store.text_tag_utils import code_snippet_tag, icon_tag
 
     # Install the custom text tags

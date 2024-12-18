@@ -1,4 +1,8 @@
 init python in font_enumerations:
+    """
+    Enumerations for the fonts used in the game.
+    """
+
     from enum import Enum
 
     class BaseFont(Enum):

@@ -1,4 +1,8 @@
 init -100 python in feather_icons:
+    """
+    Utility functions and constants for displaying Feather icons in the game.
+    """
+
     # Feather Icon (C) Cole Bemis. License MIT
 
     FEATHER_ICONS_MAPPING = {

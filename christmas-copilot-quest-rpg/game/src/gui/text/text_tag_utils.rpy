@@ -1,4 +1,8 @@
 init python in text_tag_utils:
+    """
+    Utility functions for creating custom text tags for the game.
+    """
+
     from store.feather_icons import get_feather_icon_from_name
     from store.font_enumerations import MonospaceFont, IconFont
 

@@ -1,4 +1,7 @@
 init -1 python in dynamic_blink:
+    """
+    Definitions for the dynamic blink displayable used in the game.
+    """
 
     class DynamicBlink(renpy.display.layout.DynamicDisplayable):
         """

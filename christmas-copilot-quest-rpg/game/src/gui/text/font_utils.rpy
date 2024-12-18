@@ -1,4 +1,8 @@
 init python in font_utils:
+    """
+    Utility functions for managing fonts in the game.
+    """
+
     from renpy import config
     from typing import Optional
 
