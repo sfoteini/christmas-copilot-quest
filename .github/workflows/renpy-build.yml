@@ -65,6 +65,11 @@ jobs:
           rm ./renpy-$RENPY_VERSION-web.zip
           mv ./web ./renpy
 
+      - name: Configure Ren'Py Launcher
+        run: |
+          ./renpy/renpy.sh ./renpy/launcher set_projects_directory ./$MAIN_BRANCH
+          ./renpy/renpy.sh ./renpy/launcher set_project ./$MAIN_BRANCH/$RENPY_PROJECT_PATH
+
       - name: Lint project
         run: ./renpy/renpy.sh ./$MAIN_BRANCH/$RENPY_PROJECT_PATH lint
 
