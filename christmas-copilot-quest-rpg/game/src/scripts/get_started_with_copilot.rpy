@@ -107,10 +107,10 @@ label create_github_copilot_account:
             jump create_github_copilot_individual_account
 
 label create_github_copilot_individual_account:
-    gingerbot "GitHub Copilot Individual is free for verified students, teachers, and maintainers of popular 
+    gingerbot "GitHub Copilot Pro is free for verified students, teachers, and maintainers of popular 
         open-source projects on GitHub."
-    gingerbot "If you qualify, you can sign up for free using your GitHub account. If not, you can start with a 
-        30-day free trial."
+    gingerbot "If you qualify, you can sign up for free using your GitHub account. If not, you can sign up for 
+        GitHub Copilot Free."
 
     player "Thanks for the information, GingerBot! I'll make sure to get my GitHub Copilot account set up."
 
