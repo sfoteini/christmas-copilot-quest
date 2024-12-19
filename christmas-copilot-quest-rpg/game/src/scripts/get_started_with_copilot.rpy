@@ -661,4 +661,22 @@ label explore_github_copilot_quick_chat:
 
     $ add_achievement_and_display_notification(AchievementTitle.USE_GITHUB_COPILOT_QUICK_CHAT)
 
-# TODO Add outro for this section
+label get_started_with_github_copilot_outro:
+    gingerbot "Wow, [player_name], what a journey it's been! You've learned so much; from setting up GitHub Copilot 
+        to receiving code suggestions..."
+    gingerbot "...crafting effective prompts with the {b}Single, Specific, Short, and Surround{/b} rule, and..."
+    gingerbot "...mastering features like chat participants, slash commands, chat variables, and smart actions."
+
+    player "This has been amazing, GingerBot! I feel like I've learned so much today." 
+
+    gingerbot "I'm glad to hear that!"
+    gingerbot "And don't forget, there are even more features waiting for you to discover, like GitHub Copilot in CLI 
+        and on github.com."
+    gingerbot "You can also check out more learning resources and tutorials in the 
+        {a=showmenu:learning_hub}Elf's Learning Hub{/a}."
+    gingerbot "If you have any questions or need help while coding, I'm here to assist you. Just ask!"
+
+    player "Thanks, GingerBot. You've made this tour so fun and insightful! I'm excited to try out all these features 
+        in my projects."
+
+    gingerbot "You're welcome, [player_name]! It's been a pleasure coding alongside you."
