@@ -1,9 +1,8 @@
 $ from store.achievement_enumerations import AchievementTitle
 
 label get_started_with_github_copilot:
-    # TODO Add VS Code screenshots for each scenario
-
     scene computer_bg with dissolve
+    show vscode_base at computer_screen_position
 
     gingerbot "Hello, [player_name]! I'm GingerBot, your AI assistant powered by GitHub Copilot. 
         I'm here to help you with your coding tasks."
@@ -146,6 +145,9 @@ label install_github_copilot_in_ide:
             jump explore_github_copilot_features
 
 label install_github_copilot_in_vscode:
+    hide vscode_base
+    show copilot_extension_installation at computer_screen_position
+
     gingerbot "Great! Here's what you need to do:"
 
     gingerbot "Open Visual Studio Code and go to the {b}Extensions{/b} view."
@@ -160,6 +162,9 @@ label install_github_copilot_in_vscode:
     gingerbot "That's it! You're all set to start coding with GitHub Copilot."
 
     player "Thanks for the help! I will set it up now."
+
+    hide copilot_extension_installation
+    show vscode_base at computer_screen_position
 
     $ add_achievement_and_display_notification(AchievementTitle.INSTALL_GITHUB_COPILOT_VSCODE_EXTENSION)
 
@@ -183,6 +188,9 @@ label explore_github_copilot_features:
 
     player "That's pretty neat! Can you show me an example?"
 
+    hide vscode_base
+    show empty_file at computer_screen_position
+
     gingerbot "Of course! First, create a new Python file. We are going to use Python for this example, however 
         other languages will work similarly."
 
@@ -192,6 +200,9 @@ label explore_github_copilot_features:
     menu:
         "I've created a new Python file. What's next?":
             pass
+
+    hide empty_file
+    show autocompletion_example at computer_screen_position
 
     gingerbot "Next, start typing the following function definition:
         \n{code}def calculate_days_between_dates(start_date, end_date):{/code}"
@@ -230,8 +241,14 @@ label explore_github_copilot_features:
 
     gingerbot "If nothing shows up, don't worry! Just retype the function definition as you did before."
 
+    hide autocompletion_example
+    show autocompletion_multiple_suggestions at computer_screen_position
+
     gingerbot "Sometimes, I can suggest multiple ways to implement the same function. You can hover over a suggestion 
         to preview alternatives and pick the one that works best for you."
+
+    hide autocompletion_multiple_suggestions
+    show completions_panel at computer_screen_position
 
     gingerbot "To browse through the options, use the left and right arrows, or open the {b}Completions Panel{/b} 
         from the ellipsis (...) menu."
@@ -239,6 +256,9 @@ label explore_github_copilot_features:
     player "That's really helpful! This could save me so much time."
 
     gingerbot "That's the idea! My goal is to speed things up for you."
+
+    hide completions_panel
+    show autocompletion_example at computer_screen_position
 
     gingerbot "Just remember to review my suggestions before accepting them as they may not always be correct 
         or fit what you're trying to do."
@@ -270,6 +290,9 @@ label explore_github_copilot_features:
             gingerbot "No problem! Let's try it together. Suppose you want to specify that the start and end dates 
                 are of type {code}datetime{/code}."
 
+            hide autocompletion_example
+            show autocompletion_with_type_hints at computer_screen_position
+
             gingerbot "Here's an example with type annotations:
                 \n{code}def calculate_days_between_dates(start_date: datetime, end_date: datetime) -> int:{/code}"
 
@@ -277,13 +300,15 @@ label explore_github_copilot_features:
                 "Got it! I'll give it a try now.":
                     pass
 
-            # TODO Gingerbot should present an example of autocompletions with type annotations
-
             menu:
                 gingerbot "Would you like to see another example of adding a hint?"
 
                 "Yes, show me another example.":
                     player "Yes, show me another example."
+
+                    hide autocompletion_with_type_hints
+                    show autocompletion_with_comment at computer_screen_position
+
                     gingerbot "Sure! Let's try adding the following comment in a new line:
                         \n{code}# Function to calculate the days between two dates provided as strings in a specific format{/code}"
 
@@ -293,6 +318,9 @@ label explore_github_copilot_features:
                     player "No, I'm good for now."
                     gingerbot "Awesome! You're getting the hang of this. Keep experimenting with different types of 
                         hints to see how I adjust my suggestions."
+
+    hide autocompletion_with_comment
+    show vscode_base at computer_screen_position
 
     $ add_achievement_and_display_notification(AchievementTitle.USE_GITHUB_COPILOT_AUTOCOMPLETIONS)
 
@@ -349,6 +377,9 @@ label explore_github_copilot_chat:
             gingerbot "Oh, come on! You can't escape me that easily. Let's give it a try!"
             player "{i}(I guess I can't say no to GingerBot... Let's see how this goes.){/i}"
 
+    hide vscode_base
+    show copilot_chat_panel at computer_screen_position
+
     gingerbot "Alright [player_name]! First, let's explore the chat panel. This interface allows for an in-depth 
         conversation between you and me."
 
@@ -361,6 +392,9 @@ label explore_github_copilot_chat:
             best explanation?){/i}"
 
         "What's that?":
+            hide copilot_chat_panel
+            show whats_that_prompt_answer at computer_screen_position
+
             player "I'll type 'What's that?' to ask for an explanation."
             gingerbot "Although that's a valid request, it's a bit too vague and might not provide the best answer 
                 when working in a complex codebase."
@@ -368,6 +402,9 @@ label explore_github_copilot_chat:
                 'Explain the selected code'."
 
         "Explain the selected code.":
+            hide copilot_chat_panel
+            show explain_selected_code_prompt_answer at computer_screen_position
+
             player "I'll type 'Explain the selected code' to ask for an explanation."
             gingerbot "Great choice! This will help me understand what you're looking for."
 
@@ -384,6 +421,8 @@ label explore_github_copilot_chat:
     $ add_achievement_and_display_notification(AchievementTitle.ASK_FIRST_QUESTION_TO_GITHUB_COPILOT_CHAT)
 
 label intro_to_github_copilot_chat_keywords:
+    show copilot_chat_panel at computer_screen_position
+
     gingerbot "As you remember from the rules to follow when interacting with me..."
 
     menu copilot_rules_reminder:
