@@ -25,10 +25,27 @@ define config.version = "1.0"
 ## triple-quotes, and leave a blank line between paragraphs.
 
 # TODO Update description in About screen, add credits, etc.
-define gui.about = _p("""
-An educational game about GitHub Copilot. More details coming soon.
+define gui.about_intro = _p("""
+Christmas Copilot Quest is an educational game where you learn to use GitHub Copilot to assist with coding tasks. 
+Join Santa's Lab and explore GitHub Copilot's features in an interactive and festive journey.
 """)
 
+define gui.about = _p("""
+Guided by GingerBot, Santa's friendly GitHub Copilot-powered assistant, you will learn how to install the GitHub 
+Copilot extension in Visual Studio Code, use GitHub Copilot for code development, generate inline code suggestions 
+in your editor, ask questions and receive explanations from GitHub Copilot, and create effective prompts.
+""")
+
+define gui.about_created_by = _p("""
+Christmas Copilot Quest was designed and developed by {a=https://www.linkedin.com/in/foteini-savvidou}Foteini Savvidou{/a} 
+to help you learn how to use GitHub Copilot in a fun and engaging way. If you enjoyed the game, consider {icon=star} 
+starring the {a=https://github.com/sfoteini/christmas-copilot-quest}repository{/a} on GitHub.
+""")
+
+define gui.about_ai_note = _p("""
+Graphics for this game were partially generated using AI tools, and the text has been refined with the Azure 
+OpenAI Service to ensure clarity and accuracy.
+""")
 
 ## A short name for the game used for executables and directories in the built
 ## distribution. This must be ASCII-only, and must not contain spaces, colons,

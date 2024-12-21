@@ -577,13 +577,24 @@ screen about():
 
         style_prefix "about"
 
-        vbox spacing 10:
+        vbox spacing 20:
 
-            label "[config.name!t]"
+            label "[config.name!t]" style "about_game_name_label"
+
             text _("Version [config.version!t]\n")
 
+            text gui.about_intro
             text gui.about
 
+            null height 30
+            label _("Created By")
+            text gui.about_created_by
+
+            null height 30
+            label _("Note")
+            text gui.about_ai_note
+
+            null height 30
             text _("Made with {a=https://www.renpy.org/}Ren'Py{/a} [renpy.version_only].")
 
 
@@ -591,7 +602,10 @@ style about_label is gui_label
 style about_label_text is gui_label_text
 style about_text is gui_text
 
-style about_label_text:
+style about_game_name_label is about_label
+style about_game_name_label_text is about_label_text
+
+style about_game_name_label_text:
     size gui.name_text_size
     bold True
 
