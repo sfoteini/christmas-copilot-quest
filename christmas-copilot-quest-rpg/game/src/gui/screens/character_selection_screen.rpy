@@ -4,7 +4,7 @@ screen character_selection_menu():
     tag character_selection_menu
     style_prefix "character_selection_menu"
 
-    add "images/backgrounds/character_selection_screen.png"
+    add "game_background white70"
 
     vbox:
         spacing 100

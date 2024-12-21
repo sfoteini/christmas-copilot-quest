@@ -1,7 +1,7 @@
 ﻿label start:
     call screen character_selection_menu with fade
 
-    scene christmas_village_bg with dissolve
+    scene game_background with dissolve
 
     "Welcome to the Santa's Lab!"
 
