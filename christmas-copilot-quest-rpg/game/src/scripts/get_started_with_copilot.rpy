@@ -798,3 +798,5 @@ label get_started_with_github_copilot_outro:
         in my projects."
 
     gingerbot "You're welcome, [player_name]! It's been a pleasure coding alongside you."
+
+    jump ending
