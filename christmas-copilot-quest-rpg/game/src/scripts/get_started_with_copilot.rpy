@@ -460,6 +460,9 @@ label intro_to_github_copilot_chat_keywords:
 
     player "I got it! Participants help you understand the context and intent of the question."
 
+    hide copilot_chat_panel
+    show copilot_chat_participants at computer_screen_position
+
     player "{i}(I can see the supported participants by typing {code}@{/code} in the chat... This is getting 
         interesting!){/i}"
 
@@ -497,15 +500,24 @@ label intro_to_github_copilot_chat_keywords:
 
     player "Custom chat participants? This opens up a lot of possibilities for integrating Copilot with other tools."
 
+    hide copilot_chat_participants
+    show copilot_for_azure_extension at computer_screen_position
+
     gingerbot "Exactly! For instance, by installing the GitHub Copilot for Azure extension, you can use the 
         {code}@azure{/code} participant to interact with Azure services."
 
     player "{i}(I should explore the available extensions to see what other participants I can use.){/i}"
 
+    hide copilot_for_azure_extension
+    show copilot_chat_panel at computer_screen_position
+
     gingerbot "Slash commands are shortcuts to specific functionality provided by chat participants and help me 
         understand your intent. To use a slash command, type {code}/{/code} followed by the command name."
 
     player "So, I can use slash commands to avoid typing long sentences for common actions!"
+
+    hide copilot_chat_panel
+    show copilot_chat_commands at computer_screen_position
 
     gingerbot "That's the idea! Slash commands help you interact with me more efficiently. Try using {code}/tests{/code} 
         or {code}/new{/code} to see what happens."
@@ -531,13 +543,22 @@ label intro_to_github_copilot_chat_keywords:
             jump slash_command_for_code_explanation
 
         "@workspace /explain":
+            hide copilot_chat_commands
+            show workspace_explain_prompt_answer at computer_screen_position
+
             player "{i}(I could have used the {code}@workspace /explain{/code} command to get the explanation. 
                 I'll remember that.){/i}"
+
+    hide workspace_explain_prompt_answer
+    show copilot_chat_panel at computer_screen_position
 
     gingerbot "Chat variables add additional context to your question. You can use chat variables to refer to 
         specific parts of your code or terminal contents."
 
     player "And I can see the available chat variables by typing {code}#{/code} in the chat, right?"
+
+    hide copilot_chat_panel
+    show copilot_chat_variables at computer_screen_position
 
     gingerbot "That's right! You're doing great."
 
@@ -566,9 +587,15 @@ label intro_to_github_copilot_chat_keywords:
                 in the chat. Let's try again."
             jump chat_variable_for_selection
 
+    hide copilot_chat_variables
+    show copilot_chat_panel at computer_screen_position
+
     $ add_achievement_and_display_notification(AchievementTitle.USE_GITHUB_COPILOT_KEYWORDS)
 
 label explore_github_copilot_inline_chat:
+    hide copilot_chat_panel
+    show file_with_function_definition at computer_screen_position
+
     gingerbot "Great job, [player_name]! Now, let's try the Inline Chat. I couldn't be your pair programmer without it."
 
     player "Can I talk to you directly in the code editor?"
@@ -582,7 +609,15 @@ label explore_github_copilot_inline_chat:
     gingerbot "And you can also use some of the chat commands and variables we discussed earlier to give me more context."
 
     player "{i}(I should try this out!){/i}"
+
+    hide file_with_function_definition
+    show inline_chat_explain_answer at computer_screen_position
+
     player "{i}(I can select the code, open the chat using {code}Ctrl+I{/code} and ask for an explanation...){/i}"
+
+    hide inline_chat_explain_answer
+    show inline_chat_explain_command at computer_screen_position
+
     player "{i}(I can even use the {code}/explain{/code} command to get the explanation faster.){/i}"
 
     player "But what's the difference between Inline Chat and the regular chat panel?"
@@ -594,6 +629,9 @@ label explore_github_copilot_inline_chat:
 
     player "Got it! I can use Inline Chat for quick questions and the Chat panel for more detailed discussions."
 
+    hide inline_chat_explain_command
+    show file_with_function_definition at computer_screen_position
+
     menu inline_chat_doc:
         gingerbot "Let's test it out. The function you wrote earlier doesn't have a description. 
             How would you generate one using Inline Chat?"
@@ -602,18 +640,30 @@ label explore_github_copilot_inline_chat:
             player "I'll open the chat using {code}Ctrl+Alt+I{/code} and use the {code}/doc{/code} command of the 
                 {code}@workspace{/code} participant."
 
+            hide file_with_function_definition
+            show workspace_doc_prompt_answer at computer_screen_position
+
             gingerbot "Close, but not quite. The {code}Ctrl+Alt+I{/code} shortcut typically opens the chat panel, 
                 not the Inline Chat."
             gingerbot "Also, the {code}/doc{/code} command isn't part of {code}@workspace{/code} participant. 
                 Let's try again."
+
+            hide workspace_doc_prompt_answer
+            show file_with_function_definition at computer_screen_position
 
             jump inline_chat_doc
 
         "Open the chat with Ctrl+I and use the /explain command.":
             player "I'll open the chat using {code}Ctrl+I{/code} and use the {code}/explain{/code} command."
 
+            hide file_with_function_definition
+            show inline_chat_explain_command at computer_screen_position
+
             gingerbot "You're on the right track! The {code}/explain{/code} command works, but it generates an explanation 
                 in conversational style rather than a formatted docstring. Let's give it another try."
+
+            hide inline_chat_explain_command
+            show file_with_function_definition at computer_screen_position
 
             jump inline_chat_doc
 
@@ -627,14 +677,27 @@ label explore_github_copilot_inline_chat:
         "Open the chat with Ctrl+I and use the /doc command.":
             player "I'll open the chat using {code}Ctrl+I{/code} and use the {code}/doc{/code} command."
 
+            hide file_with_function_definition
+            show inline_chat_doc_command at computer_screen_position
+
             gingerbot "That's correct! The {code}/doc{/code} command generates a docstring for the selected code."
+
+            hide inline_chat_doc_command
+            show inline_chat_doc_command_with_format at computer_screen_position
+
             gingerbot "You can even customize it by adding a short prompt for the style, like reST. The docstring will 
                 appear directly in the editor."
+
+            hide inline_chat_doc_command_with_format
+            show file_with_function_definition at computer_screen_position
 
     $ add_achievement_and_display_notification(AchievementTitle.USE_GITHUB_COPILOT_INLINE_CHAT)
 
 label explore_github_copilot_smart_actions:
     gingerbot "To make it easier to use Copilot features, there are Smart Actions that provide quick access to common tasks."
+
+    hide file_with_function_definition
+    show copilot_smart_actions at computer_screen_position
 
     gingerbot "You can select a piece of code, right-click, and choose your desired action from the {b}Copilot{/b} menu."
 
@@ -646,8 +709,15 @@ label explore_github_copilot_smart_actions:
 
     player "That sounds like a great way to get feedback on my code before committing it. How does it work?"
 
+    hide copilot_smart_actions
+    show copilot_review_and_comment_action at computer_screen_position
+
     gingerbot "Simply select the code you want feedback on and choose the {b}Review and Comment{/b} action. 
         I'll analyze it and suggest improvements or flag potential issues."
+
+    hide copilot_review_and_comment_action
+    show copilot_review_and_comment_action_output at computer_screen_position
+
     gingerbot "Any comments or code suggestions I generate will appear directly in the editor, making it easy 
         for you to review them."
 
@@ -659,7 +729,10 @@ label explore_github_copilot_smart_actions:
 
     player "Got it! It's always important to involve a human reviewer to ensure everything is on point."
 
-    $ add_achievement_and_display_notification(AchievementTitle.USE_GITHUB_COPILOT_CODE_REVIEW) 
+    $ add_achievement_and_display_notification(AchievementTitle.USE_GITHUB_COPILOT_CODE_REVIEW)
+
+    hide copilot_review_and_comment_action_output
+    show file_with_function_definition at computer_screen_position
 
 label explore_github_copilot_quick_chat:
     gingerbot "[player_name], we're almost done with the tour! But before we wrap up, I want to show you one 
@@ -689,6 +762,9 @@ label explore_github_copilot_quick_chat:
             player "Can I talk to you in the Quick Chat?"
             gingerbot "Bingo! That's right. You can find me in the Quick Chat."
 
+    hide file_with_function_definition
+    show copilot_quick_chat at computer_screen_position
+
     gingerbot "The Quick Chat is a convenient way to ask me a quick question and get back to coding without interruptions."
     gingerbot "Think of it as a mini chat panel! It supports chat participants, variables, and slash commands, just like 
         the main Chat panel."
@@ -699,6 +775,9 @@ label explore_github_copilot_quick_chat:
     gingerbot "Exactly! You can choose the chat interface that works best for your needs."
 
     $ add_achievement_and_display_notification(AchievementTitle.USE_GITHUB_COPILOT_QUICK_CHAT)
+
+    hide copilot_quick_chat
+    show vscode_base at computer_screen_position
 
 label get_started_with_github_copilot_outro:
     gingerbot "Wow, [player_name], what a journey it's been! You've learned so much; from setting up GitHub Copilot 
