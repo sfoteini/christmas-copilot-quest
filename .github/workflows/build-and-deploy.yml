@@ -1,0 +1,44 @@
+name: Build and Deploy Ren'Py Web Game
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - christmas-copilot-quest-rpg/**
+
+  workflow_dispatch:
+    inputs:
+      source_branch:
+        description: The source branch to build from
+        required: true
+        type: string
+        default: main
+      target_branch:
+        description: The target branch to deploy to
+        required: true
+        type: string
+        default: gh-pages
+      deployment_environment:
+        description: The environment to deploy to or empty for the production environment
+        required: false
+        type: string
+        default: dev
+
+jobs:
+  build:
+    uses: ./.github/workflows/renpy-build.yml
+    with:
+      source_branch: ${{ inputs.source_branch || 'main' }}
+      target_branch: ${{ inputs.target_branch || 'gh-pages' }}
+    secrets: inherit
+    permissions:
+      contents: write
+
+  deploy:
+    needs: build
+    uses: ./.github/workflows/swa-deploy.yml
+    with:
+      branch: ${{ inputs.target_branch || 'gh-pages' }}
+      deployment_environment: ${{ inputs.deployment_environment }}
+    secrets: inherit
