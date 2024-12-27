@@ -40,13 +40,13 @@ jobs:
       MAIN_BRANCH: ${{ inputs.source_branch }}
       WEB_APP_BRANCH: ${{ inputs.target_branch }}
     steps:
-      - name: Checkout main branch
+      - name: Checkout the source branch
         uses: actions/checkout@v4
         with:
           ref: ${{ env.MAIN_BRANCH }}
           path: ${{ env.MAIN_BRANCH }}
 
-      - name: Initialize gh-pages branch
+      - name: Initialize the target branch
         run: |
           cd $MAIN_BRANCH
 
@@ -65,20 +65,20 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Checkout gh-pages branch
+      - name: Checkout the target branch
         uses: actions/checkout@v4
         with:
           ref: ${{ env.WEB_APP_BRANCH }}
           path: ${{ env.WEB_APP_BRANCH }}
 
-      - name: Set Up Ren'Py CLI
+      - name: Set up Ren'Py CLI
         run: |
           wget -nv https://www.renpy.org/dl/$RENPY_VERSION/renpy-$RENPY_VERSION-sdk.tar.bz2
           tar -xf ./renpy-$RENPY_VERSION-sdk.tar.bz2
           rm ./renpy-$RENPY_VERSION-sdk.tar.bz2
           mv ./renpy-$RENPY_VERSION-sdk ./renpy
 
-      - name: Set Up Ren'Py Web CLI
+      - name: Set up Ren'Py Web CLI
         run: |
           wget -nv https://www.renpy.org/dl/$RENPY_VERSION/renpy-$RENPY_VERSION-web.zip
           unzip ./renpy-$RENPY_VERSION-web.zip
@@ -96,13 +96,13 @@ jobs:
       - name: Build project
         run: ./renpy/renpy.sh ./renpy/launcher web_build ./$MAIN_BRANCH/$RENPY_PROJECT_PATH --destination ./$MAIN_BRANCH/$RENPY_WEB_APP_PATH
 
-      - name: Delete existing files in gh-pages branch
+      - name: Delete existing files in the target branch
         run: rm -rf ./$WEB_APP_BRANCH/*
 
-      - name: Copy generated files to gh-pages branch
+      - name: Copy generated files to the target branch
         run: cp -rf ./$MAIN_BRANCH/$RENPY_WEB_APP_PATH/* ./$WEB_APP_BRANCH/
 
-      - name: Commit and push to gh-pages branch
+      - name: Commit and push to the target branch
         run: |
           cd $WEB_APP_BRANCH
 

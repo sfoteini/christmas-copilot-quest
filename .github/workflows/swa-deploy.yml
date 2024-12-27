@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Deploy to Azure Static Web Apps
     steps:
-      - name: Checkout gh-pages branch
+      - name: Checkout the deployment branch
         uses: actions/checkout@v4
         with:
           ref: ${{ inputs.branch }}
