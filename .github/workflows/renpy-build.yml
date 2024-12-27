@@ -1,24 +1,44 @@
 name: Build Ren'Py Web Game
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - christmas-copilot-quest-rpg/**
   workflow_dispatch:
+    inputs:
+      source_branch:
+        description: The source branch to build from
+        required: true
+        type: string
+        default: main
+      target_branch:
+        description: The target branch to push to
+        required: true
+        type: string
+        default: gh-pages
+
+  workflow_call:
+    inputs:
+      source_branch:
+        description: The source branch to build from
+        required: true
+        type: string
+        default: main
+      target_branch:
+        description: The target branch to push to
+        required: true
+        type: string
+        default: gh-pages
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    name: Build Ren'Py Web Game
     permissions:
       contents: write
     env:
       RENPY_VERSION: 8.3.3
       RENPY_PROJECT_PATH: christmas-copilot-quest-rpg
       RENPY_WEB_APP_PATH: christmas-copilot-quest-web
-      MAIN_BRANCH: main
-      WEB_APP_BRANCH: gh-pages
+      MAIN_BRANCH: ${{ inputs.source_branch }}
+      WEB_APP_BRANCH: ${{ inputs.target_branch }}
     steps:
       - name: Checkout main branch
         uses: actions/checkout@v4
