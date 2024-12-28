@@ -7,12 +7,10 @@ on:
         description: The source branch to build from
         required: true
         type: string
-        default: main
       target_branch:
         description: The target branch to push to
         required: true
         type: string
-        default: gh-pages
 
   workflow_call:
     inputs:
@@ -20,12 +18,10 @@ on:
         description: The source branch to build from
         required: true
         type: string
-        default: main
       target_branch:
         description: The target branch to push to
         required: true
         type: string
-        default: gh-pages
 
 jobs:
   build:

@@ -7,7 +7,6 @@ on:
         description: The branch to deploy from
         required: true
         type: string
-        default: gh-pages
       deployment_environment:
         description: The environment to deploy to or empty for the production environment
         required: false

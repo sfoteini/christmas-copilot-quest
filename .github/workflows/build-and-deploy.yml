@@ -13,17 +13,14 @@ on:
         description: The source branch to build from
         required: true
         type: string
-        default: main
       target_branch:
         description: The target branch to deploy to
         required: true
         type: string
-        default: gh-pages
       deployment_environment:
         description: The environment to deploy to or empty for the production environment
         required: false
         type: string
-        default: dev
 
 jobs:
   build:
