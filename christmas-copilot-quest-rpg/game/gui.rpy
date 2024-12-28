@@ -53,6 +53,9 @@ define gui.hover_muted_color = '#dae3f5'
 define gui.text_color = '#404040'
 define gui.interface_text_color = '#404040'
 
+## The color used for hyperlinks.
+define gui.hyperlink_text_color = '#2e53c2'
+
 
 ## Fonts and Font Sizes ########################################################
 
