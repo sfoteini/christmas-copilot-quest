@@ -1,6 +1,7 @@
 label introduction:
     scene company_bg with dissolve
-    show felix with dissolve
+    show felix at right_position
+    with dissolve
 
     felix "Ah, you must be the new coder Santa called for! What's your name?"
 
@@ -16,19 +17,23 @@ label introduction:
     player "Nice to meet you too, Felix! It looks like a busy time here at the North Pole."
 
     felix "It's December, and we're working hard to get all the toys ready for Christmas. But there's a problem..."
-    felix "The toy tracking system is down! We can't keep track of the toys we're making, and we're falling 
-        behind schedule. Santa needs your help to fix it!"
-    felix "So, are you ready to help us save Christmas?"
+    felix "The toy tracking system is down! We can't keep track of the toys we're making, and we're falling behind schedule."
 
-    player "Yes, I'm ready to help!"
+    show stephanie at left_position
+    with dissolve
 
-    felix "Great! We need to build a quick toy tracking system to get us through the holiday season."
-    felix "Santa understands there isn't much time for a fancy interface, but he stresses that the application
+    stephanie "And that's where you come in!"
+    stephanie "Oh, hi! I'm Stephanie, the team lead for this project. We're so glad you're here to help us out."
+
+    player "Hi, Stephanie! I'm happy to help."
+
+    stephanie "Great! We need to build a quick toy tracking system to get us through the holiday season."
+    stephanie "Santa understands there isn't much time for a fancy interface, but he stresses that the application
         must be reliable and easy to use."
 
     player "How much time do we have to build this system?"
 
-    felix "We have a tight deadline of 3 days to create a temporary toy tracking system."
+    stephanie "We have a tight deadline of 3 days to create a temporary toy tracking system."
 
     player "Three days? That sounds impossible..."
 
@@ -36,7 +41,7 @@ label introduction:
         to speed up the development process."
 
     menu:
-        felix "Are you ready to get started?"
+        stephanie "Are you ready to get started?"
 
         "I guess I have no choice... Let's do this!":
             jump set_up_project

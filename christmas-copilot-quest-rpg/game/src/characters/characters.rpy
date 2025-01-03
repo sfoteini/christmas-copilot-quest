@@ -2,10 +2,12 @@ init:
     # Character definitions
     define player = Character("[player_name]", image="player")
     define felix = Character(_("Felix"), image="felix")
+    define stephanie = Character(_("Stephanie"), image="stephanie")
     define gingerbot = Character(_("GingerBot"))
 
     # Character images
     image felix = dynamic_blink.DynamicBlink("felix_eyes_open", "felix_eyes_closed")
+    image stephanie = dynamic_blink.DynamicBlink("stephanie_eyes_open", "stephanie_eyes_closed")
 
     image noelle_eyes_blink = dynamic_blink.DynamicBlink("noelle_eyes_open", "noelle_eyes_closed")
     image malik_eyes_blink = dynamic_blink.DynamicBlink("malik_eyes_open", "malik_eyes_closed")
