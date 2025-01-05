@@ -24,7 +24,6 @@ define config.version = "1.0"
 ## Text that is placed on the game's about screen. Place the text between the
 ## triple-quotes, and leave a blank line between paragraphs.
 
-# TODO Update description in About screen, add credits, etc.
 define gui.about_intro = _p("""
 Christmas Copilot Quest is an educational game where you learn to use GitHub Copilot to assist with coding tasks. 
 Join Santa's Lab and explore GitHub Copilot's features in an interactive and festive journey.

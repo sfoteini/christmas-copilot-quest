@@ -16,8 +16,8 @@ screen extra_content():
             null height 20
             label _("Behind the Code")
             textbutton _("{icon=github} Check out the Source Code on GitHub") action OpenURL("https://github.com/sfoteini/christmas-copilot-quest")
-            # TODO Add link to the blog post
-
+            textbutton _("{icon=code} Behind the Scenes: Building the Game with Ren'Py and AI Tools") action OpenURL("https://sfoteini.github.io/blog/building-an-educational-game-with-ai-tools-and-azure-static-web-apps-part-1/")
+            textbutton _("{icon=code} Behind the Scenes: Automating Builds with GitHub Actions") action OpenURL("https://sfoteini.github.io/blog/building-an-educational-game-with-ai-tools-and-azure-static-web-apps-part-2/")
 
 # The achievements screen displays the achievements that the player has unlocked in the game.
 # The screen is displayed in the game menu.
@@ -68,10 +68,10 @@ screen learning_hub():
             null height 20
             label _("Microsoft Learn Learning Paths")
             textbutton _("{icon=bookmark} GitHub Copilot Fundamentals") action OpenURL("https://learn.microsoft.com/training/paths/copilot?wt.mc_id=AI-MVP-5004971")
-            textbutton _("{icon=bookmark} Accelerate app development by using GitHub Copilot") action OpenURL("https://learn.microsoft.com/training/paths/accelerate-app-development-using-github-copilot?wt.mc_id=AI-MVP-5004971")
+            textbutton _("{icon=bookmark} Accelerate App Development by Using GitHub Copilot") action OpenURL("https://learn.microsoft.com/training/paths/accelerate-app-development-using-github-copilot?wt.mc_id=AI-MVP-5004971")
             textbutton _("{icon=bookmark} GitHub Foundations") action OpenURL("https://learn.microsoft.com/training/paths/github-foundations?wt.mc_id=AI-MVP-5004971")
 
             null height 20
             label _("GitHub Copilot in Visual Studio Code")
-            textbutton _("{icon=bookmark} Get started with GitHub Copilot in VS Code") action OpenURL("https://code.visualstudio.com/docs/copilot/overview")
-            textbutton _("{icon=github} GitHub Copilot extension for VS Code") action OpenURL("https://marketplace.visualstudio.com/items?itemName=GitHub.copilot")
+            textbutton _("{icon=bookmark} Get Started with GitHub Copilot in VS Code") action OpenURL("https://code.visualstudio.com/docs/copilot/overview")
+            textbutton _("{icon=github} GitHub Copilot Extension for VS Code") action OpenURL("https://marketplace.visualstudio.com/items?itemName=GitHub.copilot")
