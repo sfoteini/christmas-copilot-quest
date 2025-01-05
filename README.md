@@ -56,6 +56,17 @@ az staticwebapp create --name christmas-copilot-quest-rpg --resource-group chris
 
 The deployment token for the Azure Static Web Apps resource should be stored as a secret in the GitHub repository with the name `AZURE_STATIC_WEB_APPS_API_TOKEN`.
 
+## Demo
+
+You can play the game online at [Christmas Copilot Quest RPG](https://nice-moss-005f18b03.4.azurestaticapps.net/).
+
+## Behind the Scenes
+
+Explore how this game was created and learn more about the technologies used in the following blog posts:
+
+* [Building the game using Ren'Py and AI tools](https://sfoteini.github.io/blog/building-an-educational-game-with-ai-tools-and-azure-static-web-apps-part-1/)
+* [Automating build and deployment with GitHub Actions and Azure Static Web Apps](https://sfoteini.github.io/blog/building-an-educational-game-with-ai-tools-and-azure-static-web-apps-part-2/)
+
 ## Note on AI Tools Usage
 
 Graphics for this game were partially created using AI tools, and the text has been refined with the Azure OpenAI Service to ensure clarity and accuracy.
